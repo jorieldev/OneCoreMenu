@@ -195,10 +195,14 @@ const stylesInComponentResponsive = `
   #menu{
     width: 100%;
     height: 55px;
+    display: block;
+    position: absolute;
+    top: 0;
+    height: 0;
   }
   .container-menu-mobile, 
   .container-menu-mobile.container{
-    height: 55px;
+    height: 0;
     display: flex;
     align-items: center;
     width:100%;
@@ -233,8 +237,10 @@ const stylesInComponentResponsive = `
   .blur-menu-show{
     width: 100%;
     background: #00000026;
-    height: 100%;left: 271px;
-    position: absolute;z-index: 2;
+    height: 100%;
+    left: 271px;
+    position: fixed;
+    z-index: 2;
     display: block;
   }
 }
@@ -394,7 +400,6 @@ const onClickHandler = (e) => {
   const selectOptionInMenu = document?.getElementById(`${nameOption}-ol`);
   const arrowOption = document?.getElementById(nameOption);
   const dropdown = arrowOption?.getElementsByClassName("iconDown");
-  console.log(arrowOption);
   if (selectOptionInMenu?.className === `${nameOption}-ol`) {
     selectOptionInMenu.style = "display: block";
     selectOptionInMenu.className = `${nameOption}-ol show`;
@@ -418,7 +423,6 @@ const onClickHandlerMobile = (e) => {
   );
   const blurMenu = document.getElementById("blur-menu");
   const container = document.getElementById("menu-mobile");
-  console.log(containerMenu);
   if (containerLogo.className === "container-menu-logo show") {
     container.setAttribute("style", "display: flex");
     item.setAttribute("style", "width: 271px;");
