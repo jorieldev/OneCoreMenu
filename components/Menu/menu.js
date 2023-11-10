@@ -481,7 +481,6 @@ const MenuComponentHtml = () => {
       list.className = `${name}-ol`;
       list.style = "display: none";
       containerListAndIcon.appendChild(list);
-      console.log(list);
       divElement.appendChild(containerListAndIcon);
     } else {
       divElement.appendChild(elementIcon);
