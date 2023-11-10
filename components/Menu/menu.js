@@ -390,7 +390,7 @@ const createList = (nameOption) => {
   dataMenu
     ?.filter(({ name }) => name === nameOption)[0]
     ?.button?.list?.map((element) => {
-      listOrder += `<li href=${element.href}>${element.text}</li>`;
+      listOrder += `<li><a href=${element.href}>${element.text}</a></li>`;
     });
   return (divElement2.innerHTML = listOrder);
 };
