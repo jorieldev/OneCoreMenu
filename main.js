@@ -36,7 +36,7 @@ function renderMenu() {
   }
 
   function enterMouse() {
-    item.setAttribute("style", "width: 271px;");
+    item.setAttribute("style", "width: 271px;position: absolute;top: 0;");
     if (screen?.width >= 1020) {
       const mobileMenu = document.querySelectorAll(
         'div[class*="container-menu-mobile container"]'

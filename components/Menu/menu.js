@@ -7,7 +7,7 @@ const stylesInComponent = `
 
 #section{
   width: 100%;
-  height: 100%;
+  height: calc( 100% - 55px );
   position: absolute;
   z-index: 0;
   left: 70px;
@@ -431,11 +431,14 @@ const onClickHandlerMobile = (e) => {
     containerMenu[0].setAttribute("style", "");
     blurMenu.className = "";
   } else {
-    item.setAttribute("style", "width: 271px; display: block");
+    item.setAttribute(
+      "style",
+      "width: 271px; display: block;position: absolute;top: 0;"
+    );
     container.setAttribute("style", "display: none");
     containerLogo.className = "container-menu-logo show";
     item.className = "container-menu show mobile";
-    containerMenu[0].style = "width: 271px";
+    containerMenu[0].style = "width: 271px;top: 0; position: relative;";
     blurMenu.className = "blur-menu-show";
     blurMenu.onclick = onClickHandlerMobile;
   }
