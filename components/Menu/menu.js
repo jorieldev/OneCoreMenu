@@ -16,7 +16,7 @@ const stylesInComponent = `
 
 .container-menu {
   width: 69px;
-  height: 100dvh;
+  height: 100%;
   background-color: white;
   display: flex;
   flex-direction: column;
