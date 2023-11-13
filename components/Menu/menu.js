@@ -180,6 +180,10 @@ div.divider-bottom {
   transform: rotate(180deg);
 }
 
+root{
+  height: 100%;
+}
+
 /* END HOVER OR FOCUS IN MENU */
 `;
 
