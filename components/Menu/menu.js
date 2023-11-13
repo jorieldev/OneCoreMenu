@@ -134,7 +134,8 @@ div.divider-bottom {
 
 .container-menu:hover {
   width: 271px;
-  height: 100%;
+  min-height: 100%;
+  height: auto;
   background-color: var(--color-background-primary);
   display: flex;
   flex-direction: column;
