@@ -2,6 +2,9 @@ import createSvg from "./icons/files.js";
 import { createList } from "../List/index.js";
 import { MocksMenu } from "./mocksMenu.js";
 const stylesInComponent = `
+.dashboard{
+  height: min-content;
+}
 #menu {
   z-index: 2;
   min-height: 100%
