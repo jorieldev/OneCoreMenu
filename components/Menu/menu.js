@@ -87,6 +87,7 @@ div.divider-bottom {
   font-weight: 500;
   line-height: 32px;
   word-wrap: break-word;
+  width: max-content;
 }
 
 .container-menu .bottom-icon {
