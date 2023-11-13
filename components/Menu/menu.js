@@ -1,127 +1,93 @@
 import createSvg from "./icons/files.js";
-
+import { createList } from "../List/index.js";
 const stylesInComponent = `
 #menu {
   z-index: 2;
+  min-height: 100%
 }
 
-#section{
-  width: 100%;
-  height: calc( 100% - 55px );
+#section {
+  width: calc(100% - 69px);
+  height: 100%;
   position: absolute;
   z-index: 0;
   left: 70px;
-  background: #EFF0F9;
+  background: #eff0f9;
 }
 
 .container-menu {
   width: 69px;
-  height: 100vh;
-  background-color: white;
+  height: 100%;
+  background-color: var(--color-background-primary);
   display: flex;
   flex-direction: column;
 }
 
-.container-menu p:focus,
-.container-menu p:hover {
-  filter: invert(75%) sepia(24%) saturate(4894%) hue-rotate(131deg)
-    brightness(91%) contrast(101%);
+.container-menu-mobile {
+  display: none;
 }
+
 .container-menu div {
   margin: 0px 6px;
 }
 
-.container-menu-logo svg.show{
-	display: none;
+.container-menu-logo,
+.container-menu-logo-full {
+  margin: 22px 15px 18px 14px !important;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 
-.container-menu-logo.show svg{
-	display: none
+div.divider-top,
+div.divider-bottom {
+  border: none;
 }
-
-.container-menu-logo.show {
-	width: auto;
-	height: auto;
-}
-
-.container-menu-logo.show svg.show{
-	display: block;
-}
-
-.container-menu div span {
-	display: none;
-}
-
-
-.container-menu.show div span {
-	display: block;
-}
-
-.container-menu-logo {
-  margin: 22px 15px 18px 14px!important;
-	width: 40px;
-	height: 40px;
-	justify-content: center;
-	display: flex;
-	align-items: center;
-}
-
-.container-menu-hr {
+.divider-top,
+.divider-bottom {
   margin: 0 13px 0 12px;
   border: solid #c9c9c9 0.8px;
   margin-block: 0;
 }
 
-.container-menu-hr.bottom {
-  margin: 0 13px 0 12px;
-  margin-block: 0;
-}
-
-.container-menu #separate{
-	margin-top: auto;
-	margin-bottom: 7px;
+.divider-bottom {
+  margin-top: 117px;
 }
 
 .container-menu .top-avatar {
-	margin: 16px auto auto 16px;
-	display: flex;
+  margin: 16px auto 102px 16px;
+  display: flex;
   text-align: center;
   text-align: -webkit-center;
   align-items: center;
 }
 .container-menu .top-avatar span {
-	margin-left: 5px;
-	font-size: 14px;
-	font-weight: 700;
-	line-height: 32px;
-	word-wrap: break-word;
-	width: 169px;
+  margin-left: 5px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 32px;
+  word-wrap: break-word;
+  width: 169px;
 }
 
 .container-menu .top-icon {
-	margin-left: 14px;
-	margin-top: 15px;
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	font-size: 16px;
-	font-weight: 500;
-	line-height: 32px;
-	word-wrap: break-word
+  margin-left: 14px;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 32px;
+  word-wrap: break-word;
 }
-
-.container-menu .top-icon .iconDown{
-	display: none;
-}
-.container-menu.show .top-icon .iconDown{
-	display: block;
-}
-
 
 .container-menu .bottom-icon {
-	margin-left: 14px;
-	margin-top: 6px;
-	display: flex;
+  margin-left: 14px;
+  margin-top: 13px;
+  display: flex;
   align-items: center;
   gap: 20px;
   font-size: 16px;
@@ -130,113 +96,150 @@ const stylesInComponent = `
   word-wrap: break-word;
 }
 
-.container-menu ol{
-	display: block;
-	margin-left: 83.5px;
-	font-size: 12px;
-	font-family: Poppins;
-	font-weight: 500;
-	line-height: 22px;
-	letter-spacing: 0.50px;
-	word-wrap: break-word;
-	list-style: none;
-}
-.container-menu ol li:hover{
-	color: #00848C;
-}
-.container-menu .bottom-icon .iconDown{
-	display: none;
-}
-
-.container-menu.show .bottom-icon .iconDown{
-	display: block;
+.container-menu ol {
+  display: block;
+  margin-left: 83.5px;
+  font-size: 12px;
+  font-family: Poppins;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+  word-wrap: break-word;
+  list-style: none;
 }
 
 .container-menu .top-icon.bottom {
   margin-bottom: 440px;
 }
 
-
-.container-menu .menu-list{
-	display: flex;
-	margin: 0;
-	flex-direction: column;
-	cursor: pointer;
-}
-.container-menu .menu-list .top-icon.click svg path,
-.container-menu .menu-list .top-icon.click span
-{
-	stroke: #00848C;
-	color: #00848C;
+.container-menu .menu-list {
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+  cursor: pointer;
 }
 
-.container-menu-mobile{
-  display: none
-}
-
-.blur-menu-show{
+.blur-menu-show {
   display: none;
   width: 0;
   height: 0;
 }
+
+/* HOVER OR FOCUS IN MENU */
+
+.container-menu:hover {
+  width: 271px;
+  height: 100%;
+  background-color: var(--color-background-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.container-menu .top-avatar a,
+.container-menu .top-icon .icon-down,
+.container-menu .top-icon span,
+.container-menu ol,
+.container-menu .bottom-icon .icon-down,
+.container-menu .bottom-icon span,
+.container-menu .container-menu-logo-full {
+  display: none;
+}
+
+.container-menu .top-icon:hover,
+.container-menu .top-icon:hover span,
+.container-menu .top-icon:hover svg path,
+.container-menu .bottom-icon:hover,
+.container-menu .bottom-icon:hover span,
+.container-menu .bottom-icon:hover svg path,
+.container-menu ol li:hover a,
+.container-menu .menu-list.active,
+.container-menu .menu-list.active span,
+.container-menu .menu-list.active svg path {
+  stroke: var(--color-text-secondary);
+  color: var(--color-text-secondary);
+}
+
+.container-menu:hover .top-avatar a,
+.container-menu:hover .top-icon span,
+.container-menu:hover .bottom-icon span,
+.container-menu:hover .menu-list .top-icon .icon-down,
+.container-menu:hover .menu-list .bottom-icon .icon-down,
+.container-menu:hover .menu-list.active ol,
+.container-menu:hover .container-menu-logo-full {
+  display: block;
+}
+.container-menu:hover .container-menu-logo {
+  display: none;
+}
+.container-menu:hover .menu-list.active .top-icon .icon-down,
+.container-menu:hover .menu-list.active .bottom-icon .icon-down {
+  transform: rotate(180deg);
+}
+
+/* END HOVER OR FOCUS IN MENU */
 `;
 
 const stylesInComponentResponsive = `
-@media (max-width: 1020px) {
-  .container-menu {
-    display: none;
-    z-index: 3;
-    position: relative;
+@media (max-width: 834px) {
+  #menu {
+    width: 100%;
   }
-  #section{
+  #section {
+    width: 100%;
     left: 0;
-    top: 55px;
   }
-  #menu{
+  .container-menu,
+  .container-menu.show .container-menu-logo {
+    display: none;
+  }
+  .container-menu-mobile {
+    display: block;
+    background: var(--color-background-primary);
+    position: absolute;
+    top: 0;
     width: 100%;
     height: 55px;
-    display: block;
+  }
+  .container-menu-mobile .menu-hamburguer svg {
     position: absolute;
-    top: 0;
-    height: 0;
-  }
-  .container-menu-mobile, 
-  .container-menu-mobile.container{
-    height: 0;
-    display: flex;
-    align-items: center;
-    width:100%;
-    position: absolute;
-    top: 0;
-    background: white;
-    z-index: 1;
-  }
-  .container-menu-mobile, 
-  .container-menu-mobile.container{
-    height: 55px;
-    display: flex;
-    align-items: center;
-    width:100%;
-  }
-  .container-menu-mobile .menuHamburguer{
-    top: 18px;
     left: 16px;
-    position: absolute;
+    top: 13px;
   }
-  .container-menu-mobile .logo-short-mobile{
-    margin: auto;
+  .container-menu-mobile .logo-one-core-short {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
   }
-  .mobile{
-    display: block!important;
+  .container-menu.show {
+    display: block;
+    width: 271px;
+    min-height: 100vh;
+    height: 100%;
+    background-color: var(--color-background-primary);
+    display: flex;
+    flex-direction: column;
   }
-  #blurMenu{
-    heigth: 0,
-    width: 0
+  .container-menu.show .top-avatar a,
+  .container-menu.show .top-icon span,
+  .container-menu.show .bottom-icon span,
+  .container-menu.show .menu-list .top-icon .icon-down,
+  .container-menu.show .menu-list .bottom-icon .icon-down,
+  .container-menu.show .menu-list.active ol,
+  .container-menu.show .container-menu-logo-full {
+    display: block;
+  }
+  .container-menu.show .menu-list.active .top-icon .icon-down,
+  .container-menu.show .menu-list.active .bottom-icon .icon-down {
+    transform: rotate(180deg);
   }
 
-  .blur-menu-show{
+  .container-menu-mobile.hover {
+    display: none;
+  }
+  .blur-menu-show {
     width: 100%;
-    background: #00000026;
+    background: var(--color-background-blur);
     height: 100%;
     left: 271px;
     position: fixed;
@@ -245,9 +248,28 @@ const stylesInComponentResponsive = `
   }
 }
 
-@media (max-height: 1287px) {
-  .container-menu .top-icon.bottom {
-    margin-bottom: auto !important;
+@media (max-height: 1000px) {
+  .container-menu .top-avatar {
+    margin: 16px auto auto 16px;
+  }
+
+  .container-menu .divider-bottom {
+    margin-top: auto;
+  }
+}
+
+@media (min-height: 1500px) {
+  .container-menu .top-avatar {
+    margin: 16px auto auto 16px;
+  }
+
+  .container-menu .divider-bottom {
+    margin-top: auto;
+  }
+}
+@media (max-height: 776px) {
+  .container-menu {
+    height: min-content;
   }
 }
 `;
@@ -259,7 +281,12 @@ const dataMenu = [
     className: "container-menu-logo",
   },
   {
-    name: "separateTop",
+    name: "logoOneCore",
+    className: "container-menu-logo-full",
+  },
+  {
+    name: "divider",
+    className: "divider-top",
   },
   {
     name: "avatar",
@@ -335,7 +362,8 @@ const dataMenu = [
     },
   },
   {
-    name: "separate",
+    name: "divider",
+    className: "divider-bottom",
   },
   {
     name: "userAvatar",
@@ -384,76 +412,49 @@ const dataMenu = [
   },
 ];
 
-const createList = (nameOption) => {
-  const divElement2 = document.createElement("ol");
-  let listOrder = "";
-  dataMenu
-    ?.filter(({ name }) => name === nameOption)[0]
-    ?.button?.list?.map((element) => {
-      listOrder += `<li><a href=${element.href}>${element.text}</a></li>`;
-    });
-  return (divElement2.innerHTML = listOrder);
-};
+function useState(defaultValue) {
+  let value = defaultValue;
+
+  function getValue() {
+    return value;
+  }
+
+  function setValue(newValue) {
+    console.log(newValue);
+    value = newValue;
+  }
+
+  return [getValue, setValue];
+}
 
 const onClickHandler = (e) => {
+  const [listOpenData, setListOpenData] = useState([]);
   const nameOption = e?.target?.id || e?.target?.getAttribute("name");
-  const selectOptionInMenu = document?.getElementById(`${nameOption}-ol`);
-  const arrowOption = document?.getElementById(nameOption);
-  const dropdown = arrowOption?.getElementsByClassName("iconDown");
-  if (selectOptionInMenu?.className === `${nameOption}-ol`) {
-    selectOptionInMenu.style = "display: block";
-    selectOptionInMenu.className = `${nameOption}-ol show`;
-    dropdown[0].style = "transform: rotate(180deg);";
-    arrowOption.className += ` click`;
+  const selectOptionInMenu = document?.getElementById(
+    `${nameOption}-ol`
+  )?.parentElement;
+  if (!selectOptionInMenu?.className?.includes("active")) {
+    setListOpenData([...listOpenData(), nameOption]);
+    selectOptionInMenu.className += " active";
   } else {
-    selectOptionInMenu.style = "display: none";
-    selectOptionInMenu.className = `${nameOption}-ol`;
-    dropdown[0].style = "transform: rotate(0);";
-    arrowOption.className = arrowOption?.className?.replace(" click", "");
-  }
-};
-
-const onClickHandlerMobile = (e) => {
-  const item = document.getElementById("container-menu");
-  const containerLogo = document.getElementsByClassName(
-    "container-menu-logo"
-  )?.[0];
-  const containerMenu = document.getElementsByClassName(
-    "container-menu-mobile"
-  );
-  const blurMenu = document.getElementById("blur-menu");
-  const container = document.getElementById("menu-mobile");
-  if (containerLogo.className === "container-menu-logo show") {
-    container.setAttribute("style", "display: flex");
-    item.setAttribute("style", "width: 271px;");
-    containerLogo.className = "container-menu-logo";
-    item.className = "container-menu";
-    containerMenu[0].setAttribute("style", "");
-    blurMenu.className = "";
-  } else {
-    item.setAttribute(
-      "style",
-      "width: 271px; display: block;position: absolute;top: 0;"
+    setListOpenData(listOpenData()?.filter((item) => item !== nameOption));
+    selectOptionInMenu.className = selectOptionInMenu.className?.replace(
+      " active",
+      ""
     );
-    container.setAttribute("style", "display: none");
-    containerLogo.className = "container-menu-logo show";
-    item.className = "container-menu show mobile";
-    containerMenu[0].style = "width: 271px;top: 0; position: relative;";
-    blurMenu.className = "blur-menu-show";
-    blurMenu.onclick = onClickHandlerMobile;
   }
 };
 
 const MenuMobileComponentHtml = () => {
   const containerMobile = document.createElement("div");
-  containerMobile.className = "container-menu-mobile";
   containerMobile.innerHTML = `
-  <div id='menu-mobile' class="container-menu-mobile container">
-    ${createSvg({ name: "menuHamburguer" })}
-    ${createSvg({ name: "logoOneCoreShort", mobile: true })}
+  <div class="menu-hamburguer">
+  ${createSvg({ name: "menuHamburguer", className: "menu-hamburguer" })}
+  </div>
+  <div class="logo-one-core-short" >
+  ${createSvg({ name: "logoOneCoreShort", className: "logo-one-core-short" })}
   </div>
   `;
-  containerMobile.onclick = onClickHandlerMobile;
   return containerMobile;
 };
 const MenuComponentHtml = () => {
@@ -463,7 +464,6 @@ const MenuComponentHtml = () => {
   stylesRoot.innerHTML += stylesViews;
   const divElement = document.createElement("div");
   divElement.id = "container-menu";
-  divElement.className = "container-menu";
   dataMenu?.forEach((element) => {
     const containerListAndIcon = document.createElement("div");
     const elementIcon = document.createElement("div");
@@ -483,10 +483,9 @@ const MenuComponentHtml = () => {
       containerListAndIcon.className = "menu-list";
       containerListAndIcon.appendChild(elementIcon);
       const list = document.createElement("ol");
-      list.innerHTML = createList(name);
+      list.innerHTML = createList({ dataMenu: dataMenu, nameOption: name });
       list.id = `${name}-ol`;
       list.className = `${name}-ol`;
-      list.style = "display: none";
       containerListAndIcon.appendChild(list);
       divElement.appendChild(containerListAndIcon);
     } else {

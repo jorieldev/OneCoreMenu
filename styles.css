@@ -54,7 +54,10 @@ td {
 
 :root {
   --color-text-primary: #252528;
+  --color-text-secondary: #00848c;
   --color-background-secondary: #eff0f9;
+  --color-background-primary: #ffffff;
+  --color-background-blur: #00000026;
 }
 
 a {
@@ -68,4 +71,9 @@ span {
 
 body {
   background-color: var(--color-background-secondary);
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: row;
 }
