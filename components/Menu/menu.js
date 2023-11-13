@@ -3,8 +3,8 @@ import { createList } from "../List/index.js";
 import { MocksMenu } from "./mocksMenu.js";
 const stylesInComponent = `
 .dashboard{
-  height: 100%;
-  min-height: 100vh;
+  height: min-content;
+    min-height: 100vh;
 }
 #menu {
   z-index: 2;
