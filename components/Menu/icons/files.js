@@ -1,7 +1,7 @@
 import { iconsAssets } from "./iconAssets.js";
 
 function createSvg({
-  name,
+  name = "",
   image,
   button,
   height = "40px",
