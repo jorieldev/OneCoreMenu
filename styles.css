@@ -77,3 +77,10 @@ body {
   display: flex;
   flex-direction: row;
 }
+
+html,
+body,
+.dashboard {
+  width: 100%;
+  height: 100%;
+}
