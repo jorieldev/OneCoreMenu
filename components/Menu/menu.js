@@ -3,7 +3,7 @@ import { createList } from "../List/index.js";
 import { MocksMenu } from "./mocksMenu.js";
 const stylesInComponent = `
 .dashboard{
-  height: min-content;
+  height: auto;
     min-height: 100vh;
 }
 #menu {
