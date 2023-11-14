@@ -20,9 +20,7 @@ export const MocksMenu = () => ({
       button: {
         text: "Nombre de la empresa",
         href: "#",
-      },
-      height: "36px",
-      width: "36px",
+      }
     },
     {
       name: "securitySearch",
