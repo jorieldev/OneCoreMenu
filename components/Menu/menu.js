@@ -168,6 +168,8 @@ div.divider-bottom {
 
 .container-menu .top-icon:focus svg.icon-down path,
 .container-menu .top-icon:hover svg.icon-down path,
+.container-menu .bottom-icon:focus svg.icon-down path,
+.container-menu .bottom-icon:hover svg.icon-down path,
 .container-menu .menu-list.active svg.icon-down path {
   stroke: none;
   fill: var(--color-text-secondary);
