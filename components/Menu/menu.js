@@ -166,6 +166,13 @@ div.divider-bottom {
   color: var(--color-text-secondary);
 }
 
+.container-menu .top-icon:focus svg.icon-down path,
+.container-menu .top-icon:hover svg.icon-down path,
+.container-menu .menu-list.active svg.icon-down path {
+  stroke: none;
+  fill: var(--color-text-secondary);
+}
+
 .container-menu:hover .top-avatar a,
 .container-menu:hover .top-icon span,
 .container-menu:hover .bottom-icon span,
