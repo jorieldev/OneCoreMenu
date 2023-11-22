@@ -233,6 +233,7 @@ const stylesInComponentResponsive = `
   }
   .container-menu.show {
     display: block;
+    position: fixed;
     width: 271px;
     min-height: 100vh;
     height: 100%;
