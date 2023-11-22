@@ -7,7 +7,7 @@ const stylesInComponent = `
     min-height: 100vh;
 }
 #menu {
-  z-index: 2;
+  z-index: 99;
   min-height: 100%
 }
 
